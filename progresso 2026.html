@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Chapa Progresso – Grêmio Estudantil CCM Nestor Victor. União, ação e futuro melhor para nossa escola!"/>
+  <title>Chapa Progresso | CCM Nestor Victor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    :root {
+      --cor-principal: #ff6b00;
+      --cor-escura: #1f1f1f;
+      --cor-clara: #ffffff;
+      --cor-cinza: #4a4a4a;
+      --cor-cinza-claro: #f8f9fa;
+      --sombra-suave: 0 8px 32px rgba(0,0,0,0.08);
+      --blur: blur(12px);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: var(--cor-clara);
+      color: var(--cor-escura);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: var(--blur);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    header.scrolled { padding: 0.8rem 0; background: rgba(255,255,255,0.98); }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--cor-principal);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: var(--cor-escura);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 2px; bottom: -6px; left: 0;
+      background: var(--cor-principal);
+      transition: width 0.35s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--cor-principal); }
+
+    .hero {
+      height: 100vh;
+      min-height: 720px;
+      background: linear-gradient(135deg, #ff6b00 0%, #ff8c3d 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 0 5%;
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    .hero img {
+      width: 220px;
+      border-radius: 50%;
+      border: 8px solid rgba(255,255,255,0.3);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.35);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 5.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 400;
+      opacity: 0.95;
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-primario {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      background: white;
+      color: var(--cor-principal);
+      font-weight: 600;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      transition: all 0.35s ease;
+    }
+
+    .btn-primario:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      background: #fffaf5;
+    }
+
+    section {
+      padding: 100px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--cor-principal);
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      width: 90px;
+      height: 4px;
+      background: var(--cor-principal);
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .grid-propostas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--sombra-suave);
+      transition: all 0.4s ease;
+      text-align: center;
+      border: 1px solid #eee;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(255,107,0,0.15);
+      border-color: var(--cor-principal);
+    }
+
+    .card i {
+      font-size: 3.5rem;
+      color: var(--cor-principal);
+      margin-bottom: 1.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: var(--cor-cinza);
+      font-size: 1.05rem;
+    }
+
+    .equipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.2rem 1.8rem;
+      text-align: center;
+    }
+
+    .membro {
+      padding: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .membro:hover { transform: translateY(-8px); }
+
+    .membro img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--cor-principal);
+      margin-bottom: 1.2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .membro h4 {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
+      color: var(--cor-escura);
+    }
+
+    .membro p {
+      color: var(--cor-cinza);
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .cta-final {
+      background: linear-gradient(135deg, #111, #1f1f1f);
+      color: white;
+      text-align: center;
+      padding: 100px 5%;
+    }
+
+    .cta-final h2 { color: white; }
+
+    .cta-final .btn-primario {
+      background: var(--cor-principal);
+      color: white;
+    }
+
+    .cta-final .btn-primario:hover { background: #ff5500; }
+
+    footer {
+      background: #0a0a0a;
+      color: #888;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--cor-principal);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: #ff8c3d; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3.8rem; }
+      .hero img { width: 180px; }
+      nav { flex-direction: column; gap: 1rem; padding: 1rem 5%; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+      section { padding: 70px 5%; }
+      .equipe-grid { gap: 2rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="header">
+  <nav>
+    <a href="#" class="logo">Progresso</a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#propostas">Propostas</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <img src="https://cdn.discordapp.com/attachments/1430389559073439784/1478109459736694928/1000216575.png?ex=69a73435&is=69a5e2b5&hm=5d74cf19b36a9b28344eae1b42292a3dec2f64e7ee923909f4aa97df39fc3876&" alt="Logo Chapa Progresso">
+    <h1>Chapa Progresso</h1>
+    <p>Transformando o CCM Nestor Victor com união, atitude e resultados reais.</p>
+    <a href="https://www.instagram.com/progresso_gremio?igsh=bWsxOTk1d2FmODN1" target="_blank" class="btn-primario">
+      <i class="fab fa-instagram"></i> Fique por dentro no Instagram
+    </a>
+  </div>
+</section>
+
+<section id="sobre">
+  <h2 data-aos="fade-up">Quem Somos</h2>
+  <p style="max-width: 800px; margin: 0 auto 2rem; font-size: 1.25rem; text-align: center; color: var(--cor-cinza);">
+    Somos um grupo de alunos apaixonados pelo nosso colégio. Acreditamos que o grêmio pode ser muito mais: um espaço de escuta, de ideias que saem do papel e de momentos que todo mundo lembra com carinho.
+  </p>
+  <p style="max-width: 800px; margin: 0 auto; font-size: 1.25rem; text-align: center; color: var(--cor-cinza);">
+    Nossa missão é simples: ouvir você, propor o que faz sentido e executar com transparência e energia positiva.
+  </p>
+</section>
+
+<section id="propostas" style="background: var(--cor-cinza-claro);">
+  <h2 data-aos="fade-up">Nossas Principais Propostas</h2>
+  <div class="grid-propostas">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <i class="fas fa-party-horn"></i>
+      <h3>Eventos que Marcam</h3>
+      <p>Festas temáticas, gincanas épicas, semanas culturais e dias especiais com participação aberta a todos os anos.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-futbol"></i>
+      <h3>Esporte & Movimento</h3>
+      <p>Campeonatos interclasses, torneios abertos, manutenção das quadras e incentivo à prática esportiva para todos.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <i class="fas fa-bullhorn"></i>
+      <h3>Comunicação Real</h3>
+      <p>Canal direto no Instagram/WhatsApp, reuniões mensais abertas, caixa de ideias e relatórios transparentes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="equipe">
+  <h2 data-aos="fade-up">Nossa Equipe</h2>
+  <div class="equipe-grid">
+    <div class="membro" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://cdn.discordapp.com/attachments/1430389559073439784/1478192446277157007/grok_image_1771533634662.jpg?ex=69a7817e&is=69a62ffe&hm=a2bd8818a90b115177d1b6e71d1d10b24d05f6d14f6528683b7eaeb1f4516ba5&" alt="Caique H. - Presidente">
+      <h4>Caique H.</h4>
+      <p>Presidente</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="120">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Emilly" alt="Emilly">
+      <h4>Emilly</h4>
+      <p>Vice-Presidente</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="140">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Pedro" alt="Pedro">
+      <h4>Pedro</h4>
+      <p>Secretário</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="160">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Talita" alt="Talita">
+      <h4>Talita</h4>
+      <p>Tesoureiro</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="180">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Brenda" alt="Brenda & Lorena">
+      <h4>Brenda & Lorena</h4>
+      <p>Social</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Kauana" alt="Kauana & Gabi">
+      <h4>Kauana & Gabi</h4>
+      <p>Cultura</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="220">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=Isa" alt="Isa">
+      <h4>Isa</h4>
+      <p>Esporte</p>
+    </div>
+    <div class="membro" data-aos="zoom-in" data-aos-delay="240">
+      <img src="https://via.placeholder.com/140/000000/ffffff?text=João" alt="João">
+      <h4>João</h4>
+      <p>Coordenador</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="contato">
+  <h2 data-aos="fade-up">Faça parte da mudança</h2>
+  <p style="max-width: 700px; margin: 0 auto 2.5rem; font-size: 1.3rem; opacity: 0.9;">
+    Siga nosso Instagram para acompanhar todas as novidades, votar nas enquetes e participar ativamente da construção do futuro do nosso grêmio.
+  </p>
+  <a href="https://www.instagram.com/progresso_gremio?igsh=bWsxOTk1d2FmODN1" target="_blank" class="btn-primario">
+    <i class="fab fa-instagram"></i> @progresso_gremio
+  </a>
+</section>
+
+<footer>
+  © 2026 Chapa Progresso – Grêmio Estudantil CCM Nestor Victor<br>
+  Pérola/PR • Feito com união e muita vontade de fazer acontecer
+</footer>
+
+<script>
+  // Navbar shrink
+  window.addEventListener('scroll', () => {
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 100);
+  });
+
+  // Carrega AOS dinamicamente
+  const aosScript = document.createElement('script');
+  aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+  document.body.appendChild(aosScript);
+  aosScript.onload = () => {
+    AOS.init({ once: true, duration: 800, easing: 'ease-out' });
+  };
+</script>
+
+</body>
+</html>
